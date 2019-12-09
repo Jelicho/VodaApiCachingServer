@@ -1,0 +1,5 @@
+#API server
+API:
+  host: "localhost"
+  port: 1234
+  baseUrl: "http://"
