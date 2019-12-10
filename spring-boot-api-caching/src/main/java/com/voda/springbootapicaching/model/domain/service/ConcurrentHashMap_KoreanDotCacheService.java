@@ -1,16 +1,16 @@
 package com.voda.springbootapicaching.model.domain.service;
 
-import com.voda.springbootapicaching.model.domain.cache.KoreanDotCache;
+import com.voda.springbootapicaching.model.domain.cache.ConcurrentHashMap_KoreanDotCache;
 import org.springframework.stereotype.Service;
 
 @Service
 public class KoreanDotCacheService {
-    KoreanDotCache koreanDotCache;
+    ConcurrentHashMap_KoreanDotCache concurrentHashMapKoreanDotCache;
     KoreanDotCacheService(){
-        koreanDotCache = KoreanDotCache.getInstance();
+        concurrentHashMapKoreanDotCache = ConcurrentHashMap_KoreanDotCache.getInstance();
     }
     public String cacheHit(String key){
-        String value = koreanDotCache.search(key);
+        String value = concurrentHashMapKoreanDotCache.search(key);
         if(value!=null){
             return value;
         }else{
