@@ -1,12 +1,11 @@
-package com.voda.springbootapicaching.model.domain.LRUCache;
-
-import java.util.LinkedList;
+package com.voda.springbootapicaching.util;
 
 public class MyLinkedList<E> {
     int size = 0;
     MyLinkedList.Node<E> first;
     MyLinkedList.Node<E> last;
 
+    public MyLinkedList(){};
 
     public static class Node<E> {
         E item;
@@ -18,11 +17,15 @@ public class MyLinkedList<E> {
             this.next = next;
             this.prev = prev;
         }
+
+        public E getItem(){
+            return item;
+        }
     }
 
     public int size(){return size;}
 
-    void addLast(E key){
+    public Node addLast(E key){
         final Node<E> l=last;
         Node newNode = new Node<>(l, key, null);
         if(first==null){
@@ -30,8 +33,18 @@ public class MyLinkedList<E> {
         }
         last = newNode;
         size++;
+        return newNode;
     }
-    void delete(Node<E> node){
+    public Node addLast(Node<E> node){
+        final Node<E> l=last;
+        if(first==null){
+            first = node;
+        }
+        last = node;
+        size++;
+        return node;
+    }
+    public void delete(Node<E> node){
         final Node prev = node.prev;
         final Node next = node.next;
         node.prev = null;
