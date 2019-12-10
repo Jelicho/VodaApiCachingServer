@@ -3,7 +3,7 @@ package com.voda.springbootapicaching.controller;
 import com.voda.springbootapicaching.enumeration.ResponseMessage;
 import com.voda.springbootapicaching.enumeration.StatusCode;
 import com.voda.springbootapicaching.model.common.DefaultRes;
-import com.voda.springbootapicaching.model.domain.service.EnglishDotCacheService;
+import com.voda.springbootapicaching.model.domain.service.ConcurrentHashMap_EnglishDotCacheService;
 import com.voda.springbootapicaching.model.dto.DotDto;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -21,16 +21,16 @@ import javax.servlet.http.HttpServletRequest;
 @CrossOrigin(origins = "*")
 @Controller
 public class EnglishDotController extends  AbstractContoller {
-    private final EnglishDotCacheService englishDotCacheService;
-    public EnglishDotController(RestTemplate restTemplate, EnglishDotCacheService englishDotCacheService) {
+    private final ConcurrentHashMap_EnglishDotCacheService concurrentHashMapEnglishDotCacheService;
+    public EnglishDotController(RestTemplate restTemplate, ConcurrentHashMap_EnglishDotCacheService concurrentHashMapEnglishDotCacheService) {
         super(restTemplate);
-        this.englishDotCacheService = englishDotCacheService;
+        this.concurrentHashMapEnglishDotCacheService = concurrentHashMapEnglishDotCacheService;
     }
 
     @GetMapping
     public ResponseEntity mirrorRest(@RequestParam String letter, HttpMethod method, HttpServletRequest request) {
         String key = request.getQueryString();
-        String cacheValue = englishDotCacheService.cacheHit(key);
+        String cacheValue = concurrentHashMapEnglishDotCacheService.cacheHit(key);
         if (cacheValue != null) {
             return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CACHE_HIT, new DotDto(cacheValue)), HttpStatus.OK);
         }

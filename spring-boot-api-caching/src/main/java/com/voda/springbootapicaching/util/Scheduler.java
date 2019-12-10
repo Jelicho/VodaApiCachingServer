@@ -1,26 +1,26 @@
 package com.voda.springbootapicaching.util;
 
-import com.voda.springbootapicaching.model.domain.cache.EnglishDotCache;
-import com.voda.springbootapicaching.model.domain.cache.KoreanDotCache;
+import com.voda.springbootapicaching.model.domain.cache.ConcurrentHashMap_EnglishDotCache;
+import com.voda.springbootapicaching.model.domain.cache.ConcurrentHashMap_KoreanDotCache;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Scheduler {
-    private final EnglishDotCache englishDotCache;
-    private final KoreanDotCache koreanDotCache;
+    private final ConcurrentHashMap_EnglishDotCache concurrentHashMapEnglishDotCache;
+    private final ConcurrentHashMap_KoreanDotCache concurrentHashMapKoreanDotCache;
 
-    public Scheduler(EnglishDotCache englishDotCache, KoreanDotCache koreanDotCache) {
-        this.englishDotCache = englishDotCache;
-        this.koreanDotCache = koreanDotCache;
+    public Scheduler(ConcurrentHashMap_EnglishDotCache concurrentHashMapEnglishDotCache, ConcurrentHashMap_KoreanDotCache concurrentHashMapKoreanDotCache) {
+        this.concurrentHashMapEnglishDotCache = concurrentHashMapEnglishDotCache;
+        this.concurrentHashMapKoreanDotCache = concurrentHashMapKoreanDotCache;
     }
 
     @Scheduled(cron = "0 0 * * * *")
     public void cacheFresh() {
         System.out.println("cacheFresh Scheduler 동작 사작");
         try {
-            englishDotCache.deleteAll();
-            koreanDotCache.deleteAll();
+            concurrentHashMapEnglishDotCache.deleteAll();
+            concurrentHashMapKoreanDotCache.deleteAll();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

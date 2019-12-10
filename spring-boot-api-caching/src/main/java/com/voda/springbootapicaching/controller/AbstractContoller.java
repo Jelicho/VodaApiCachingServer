@@ -2,7 +2,6 @@ package com.voda.springbootapicaching.controller;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import com.voda.springbootapicaching.model.domain.service.KoreanDotCacheService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;

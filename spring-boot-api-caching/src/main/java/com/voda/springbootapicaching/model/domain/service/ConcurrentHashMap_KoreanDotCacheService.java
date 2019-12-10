@@ -4,9 +4,9 @@ import com.voda.springbootapicaching.model.domain.cache.ConcurrentHashMap_Korean
 import org.springframework.stereotype.Service;
 
 @Service
-public class KoreanDotCacheService {
+public class ConcurrentHashMap_KoreanDotCacheService {
     ConcurrentHashMap_KoreanDotCache concurrentHashMapKoreanDotCache;
-    KoreanDotCacheService(){
+    ConcurrentHashMap_KoreanDotCacheService(){
         concurrentHashMapKoreanDotCache = ConcurrentHashMap_KoreanDotCache.getInstance();
     }
     public String cacheHit(String key){

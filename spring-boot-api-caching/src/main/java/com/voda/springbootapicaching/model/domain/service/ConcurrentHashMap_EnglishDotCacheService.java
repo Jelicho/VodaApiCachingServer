@@ -4,9 +4,9 @@ import com.voda.springbootapicaching.model.domain.cache.ConcurrentHashMap_Englis
 import org.springframework.stereotype.Service;
 
 @Service
-public class EnglishDotCacheService {
+public class ConcurrentHashMap_EnglishDotCacheService {
     ConcurrentHashMap_EnglishDotCache concurrentHashMapEnglishDotCache;
-    EnglishDotCacheService(){
+    ConcurrentHashMap_EnglishDotCacheService(){
         concurrentHashMapEnglishDotCache = concurrentHashMapEnglishDotCache.getInstance();
     }
     public String cacheHit(String key){
