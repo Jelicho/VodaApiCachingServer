@@ -34,7 +34,7 @@ public class LRUCache {
 
     @Synchronized
     public void add(String key, String val){
-        MyLinkedList.Node value = dotCache.addLast(val);
+        MyLinkedList.Node value = dotCache.addLast(key, val);
         searchingMap.put(key, value);
     }
 
@@ -51,7 +51,7 @@ public class LRUCache {
 
     @Synchronized
     public String get(String key){
-        return (String) ((MyLinkedList.Node)searchingMap.get(key)).getItem();
+        return (String) ((MyLinkedList.Node)searchingMap.get(key)).getValue();
     }
 
     @Synchronized
@@ -59,5 +59,15 @@ public class LRUCache {
         MyLinkedList.Node node = (MyLinkedList.Node) searchingMap.get(key);
         dotCache.delete(node);
         dotCache.addLast(node);
+    }
+
+    public int size(){return dotCache.size();}
+
+    @Synchronized
+    public void deleteFirst(){
+        MyLinkedList.Node first = dotCache.getFirst();
+        final String delete_key = (String) first.getKey();
+        dotCache.delete(first);
+        searchingMap.remove(delete_key);
     }
 }

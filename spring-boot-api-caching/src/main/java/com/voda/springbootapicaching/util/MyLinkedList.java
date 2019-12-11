@@ -8,26 +8,28 @@ public class MyLinkedList<E> {
     public MyLinkedList(){};
 
     public static class Node<E> {
-        E item;
+        E key;
+        E value;
         MyLinkedList.Node<E> next;
         MyLinkedList.Node<E> prev;
 
-        Node(MyLinkedList.Node<E> prev, E element, MyLinkedList.Node<E> next) {
-            this.item = element;
+        Node(MyLinkedList.Node<E> prev, E key, E element, MyLinkedList.Node<E> next) {
+            this.key = key;
+            this.value = element;
             this.next = next;
             this.prev = prev;
         }
-
-        public E getItem(){
-            return item;
+        public E getKey() {return key;}
+        public E getValue(){
+            return value;
         }
     }
 
     public int size(){return size;}
-
-    public Node addLast(E key){
+    public MyLinkedList.Node getFirst(){return first;}
+    public Node addLast(E key, E value){
         final Node<E> l=last;
-        Node newNode = new Node<>(l, key, null);
+        Node newNode = new Node<>(l, key, value, null);
         if(first==null){
             first = newNode;
         }
@@ -68,7 +70,8 @@ public class MyLinkedList<E> {
     public void clear(){
         for (MyLinkedList.Node<E> x = first; x != null; ) {
             MyLinkedList.Node<E> next = x.next;
-            x.item = null;
+            x.key = null;
+            x.value = null;
             x.next = null;
             x.prev = null;
             x = next;
