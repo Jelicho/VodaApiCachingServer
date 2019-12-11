@@ -1,10 +1,6 @@
 package com.voda.springbootapicaching.model.domain.LRUCache;
 
-import com.voda.springbootapicaching.model.domain.cache.ConcurrentHashMap_EnglishDotCache;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class LRU_KoreanDotCache extends LRUCache{
