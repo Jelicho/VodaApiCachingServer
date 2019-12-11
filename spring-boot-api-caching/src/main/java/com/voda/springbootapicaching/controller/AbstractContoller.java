@@ -2,6 +2,7 @@ package com.voda.springbootapicaching.controller;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+import com.voda.springbootapicaching.model.common.APIRes;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -40,6 +41,6 @@ public class AbstractContoller {
         httpHeaders.set(HttpHeaders.CONTENT_TYPE, String.valueOf(mediaType));
 
         HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
-        return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, httpEntity, String.class);
+        return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, httpEntity, APIRes.class);
     }
 }
