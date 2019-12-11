@@ -6,6 +6,6 @@ import lombok.*;
 @Getter
 @Setter
 public class DotDto{
-    String cacheValue;
+    String dotValue;
 }
 

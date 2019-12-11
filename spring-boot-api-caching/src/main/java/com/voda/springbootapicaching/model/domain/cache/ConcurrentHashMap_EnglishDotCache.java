@@ -5,18 +5,18 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class EnglishDotCache implements Cache{
+public class ConcurrentHashMap_EnglishDotCache implements Cache{
     ConcurrentHashMap<String, String> englishDotCache;
 
-    private EnglishDotCache() {
+    private ConcurrentHashMap_EnglishDotCache() {
         englishDotCache = new ConcurrentHashMap<>();
     }
 
     private static class LazyHolder {
-        public static final EnglishDotCache INSTANCE = new EnglishDotCache();
+        public static final ConcurrentHashMap_EnglishDotCache INSTANCE = new ConcurrentHashMap_EnglishDotCache();
     }
 
-    public static EnglishDotCache getInstance() {
+    public static ConcurrentHashMap_EnglishDotCache getInstance() {
         return LazyHolder.INSTANCE;
     }
 
